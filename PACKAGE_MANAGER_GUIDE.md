@@ -55,11 +55,14 @@ yarn start
 ### Port Conflicts
 If you see port conflicts:
 ```bash
-# Kill all ports (8081-8084)
+# Kill all ports (8081-8085)
 bun run kill-ports
 
+# Check port availability
+bun run check-ports
+
 # Or individually
-lsof -ti:8083 | xargs kill -9
+lsof -ti:8085 | xargs kill -9
 ```
 
 ### Clean Project
@@ -97,7 +100,7 @@ npm run setup:npm
 ## 🌐 Access Points
 
 After starting:
-- **Client (Expo)**: http://localhost:8083
+- **Client (Expo)**: http://localhost:8085
 - **Server**: Auto-assigned port (check logs)
 - **QR Code**: Available in browser for mobile testing
 
@@ -105,7 +108,7 @@ After starting:
 
 | Issue | Solution |
 |-------|----------|
-| **Port 8081 busy** | ✅ Fixed - now uses port 8083 |
+| **Port conflicts** | ✅ Fixed - now uses port 8085 |
 | **Different package managers** | ✅ All three supported |
 | **Installation conflicts** | ✅ Use `bun run clean` first |
 | **Dependency conflicts** | ✅ Delete node_modules and reinstall |
