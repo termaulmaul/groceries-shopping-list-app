@@ -1,0 +1,20 @@
+{
+  "name": "groceries-shopping-list-app",
+  "version": "1.0.0",
+  "description": "Local-First Shopping List App with client and server",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run start:client\" \"npm run start:server\"",
+    "start:client": "cd client && npx expo start",
+    "start:server": "cd server && bun dev",
+    "install:all": "cd client && bun install && cd ../server && bun install",
+    "dev": "npm run start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "workspaces": ["client", "server"],
+  "dependencies": {
+    "ws": "^8.18.3"
+  }
+}
