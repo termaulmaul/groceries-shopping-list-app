@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "concurrently \"npm run start:client\" \"npm run start:server\"",
-    "start:client": "cd client && npx expo start --port 8085",
+    "start:client": "cd client && npx expo start",
     "start:server": "cd server && bun dev",
     "start:bun": "concurrently \"bun run start:client\" \"bun run start:server\"",
     "start:npm": "concurrently \"npm run start:client\" \"npm run start:server\"",
@@ -24,11 +24,11 @@
     "dev:yarn": "yarn run start:yarn",
     "dev:npm": "npm run start:npm",
     "clean": "rm -rf client/node_modules server/node_modules node_modules package-lock.json yarn.lock bun.lockb client/package-lock.json server/package-lock.json client/yarn.lock server/yarn.lock client/bun.lockb server/bun.lockb",
-    "kill-ports": "lsof -ti:8081,8082,8083,8084,8085 | xargs kill -9 2>/dev/null || true",
+    "kill-ports": "lsof -ti:8081,8082 | xargs kill -9 2>/dev/null || true",
     "setup:bun": "bun run clean && bun run install:bun && bun run kill-ports && bun run start:bun",
     "setup:yarn": "yarn run clean && yarn run install:yarn && yarn run kill-ports && yarn run start:yarn",
     "setup:npm": "npm run clean && npm run install:npm && npm run kill-ports && npm run start:npm",
-    "check-ports": "echo 'Checking port availability:' && (lsof -i:8085 && echo '❌ Port 8085 in use' || echo '✅ Port 8085 available')"
+    "check-ports": "echo 'Checking port availability:' && (lsof -i:8081 && echo '❌ Port 8081 in use' || echo '✅ Port 8081 available')"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
