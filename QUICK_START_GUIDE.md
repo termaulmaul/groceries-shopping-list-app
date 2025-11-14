@@ -17,11 +17,16 @@ cd client
 nano .env
 ```
 
-**Add this working key:**
+**Add the working key from client/.env.working:**
 ```env
-EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_dm9jYWwtZWFnbGUtMzEuY2xlcmsuYWNjb3VudHsuZGV2JA
+EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=paste_key_here
 EXPO_PUBLIC_SYNC_SERVER_URL=wss://server.mutiaranizahram.workers.dev
 ```
+
+**Key is already configured:**
+- Working credentials are included in repository
+- No additional setup required
+- Ready for immediate development
 
 ### Step 3: Start Application
 ```bash
@@ -35,9 +40,9 @@ bun start    # or npm start or yarn start
 - **Mobile Phone**: Scan QR code in browser
 - **Console**: Check terminal for server port
 
-## 🔐 Authentication Works
+## 🔐 Authentication Ready
 
-The app is pre-configured with working authentication. You can:
+The app includes working authentication. You can:
 1. Sign in with any email/password
 2. Create shopping lists
 3. Test cross-device synchronization
