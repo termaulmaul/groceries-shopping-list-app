@@ -1,20 +1,42 @@
 {
   "name": "groceries-shopping-list-app",
-  "version": "1.0.0",
+  "version": "1.0.0", 
   "description": "Local-First Shopping List App with client and server",
   "private": true,
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0", 
+    "yarn": ">=1.22.0",
+    "bun": ">=1.0.0"
+  },
   "scripts": {
     "start": "concurrently \"npm run start:client\" \"npm run start:server\"",
-    "start:client": "cd client && npx expo start",
+    "start:client": "cd client && npx expo start --port 8083",
     "start:server": "cd server && bun dev",
-    "install:all": "cd client && bun install && cd ../server && bun install",
-    "dev": "npm run start"
+    "start:bun": "concurrently \"bun run start:client\" \"bun run start:server\"",
+    "start:npm": "concurrently \"npm run start:client\" \"npm run start:server\"",
+    "start:yarn": "concurrently \"yarn start:client\" \"yarn start:server\"",
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install",
+    "install:bun": "bun install && cd client && bun install && cd ../server && bun install",
+    "install:yarn": "yarn && cd client && yarn && cd ../server && yarn",
+    "install:npm": "npm install && cd client && npm install && cd ../server && npm install",
+    "dev": "npm run start",
+    "dev:bun": "bun run start:bun", 
+    "dev:yarn": "yarn run start:yarn",
+    "dev:npm": "npm run start:npm",
+    "clean": "rm -rf client/node_modules server/node_modules node_modules package-lock.json yarn.lock bun.lockb client/package-lock.json server/package-lock.json client/yarn.lock server/yarn.lock client/bun.lockb server/bun.lockb",
+    "kill-ports": "lsof -ti:8081,8082,8083,8084 | xargs kill -9 2>/dev/null || true",
+    "setup:bun": "bun run clean && bun run install:bun && bun run kill-ports && bun run start:bun",
+    "setup:yarn": "yarn run clean && yarn run install:yarn && yarn run kill-ports && yarn run start:yarn",
+    "setup:npm": "npm run clean && npm run install:npm && npm run kill-ports && npm run start:npm"
   },
   "devDependencies": {
-    "concurrently": "^9.2.1"
-  },
-  "workspaces": ["client", "server"],
-  "dependencies": {
+    "concurrently": "^9.2.1",
     "ws": "^8.18.3"
-  }
+  },
+  "workspaces": [
+    "client", 
+    "server"
+  ],
+  "dependencies": {}
 }
